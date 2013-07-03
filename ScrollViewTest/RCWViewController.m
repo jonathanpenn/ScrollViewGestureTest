@@ -1,11 +1,14 @@
 #import "RCWViewController.h"
+#import "RCWGraphView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface RCWViewController ()
+@interface RCWViewController () {
+    CGPoint dragOffset;
+}
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *myPanGestureRecognizer;
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet RCWGraphView *graphView;
 
 @end
 
@@ -13,10 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpRoundedRects];
     [self adjustContentSizeForSomethingToScroll];
 
-    // Set the pan gesture recognizer itself.
     self.myPanGestureRecognizer.delegate = self;
 }
 
@@ -28,39 +29,35 @@
 
 #pragma mark - Gesture Handling
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-
-    return NO;
-}
-
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer == self.myPanGestureRecognizer) {
-        CGPoint coords = [self.myPanGestureRecognizer locationInView:self.view];
-        CGRect frame = [self.scrollView convertRect:self.label.frame toView:self.view];
-        return CGRectContainsPoint(frame, coords);
+        CGPoint point = [gestureRecognizer locationInView:self.graphView];
+        return [self.graphView hitDetectedAtPoint:point];
     } else {
         return YES;
     }
 }
 
 - (IBAction)myPanGestureRecognized:(UIPanGestureRecognizer *)recognizer {
-    CGPoint coords = [recognizer locationInView:self.scrollView];
-    self.label.text = [NSString stringWithFormat:@"My Pan: %@", NSStringFromCGPoint(coords)];
-    self.label.center = coords;
+    CGPoint nowPoint = [recognizer locationInView:self.graphView];
+
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        CGPoint rectOrigin = self.graphView.theRedRect.origin;
+        dragOffset = CGPointMake(rectOrigin.x - nowPoint.x, rectOrigin.y - nowPoint.y);
+    }
+
+    CGPoint adjustedPoint = CGPointMake(nowPoint.x + dragOffset.x, nowPoint.y + dragOffset.y);
+    [self.graphView moveRectToPoint:adjustedPoint];
 }
 
 
 #pragma mark - Setup
 
-- (void)setUpRoundedRects
-{
-    self.label.layer.masksToBounds = YES;
-    self.label.layer.cornerRadius = 15;
-}
-
 - (void)adjustContentSizeForSomethingToScroll {
     // Need to set the content size so there is, in fact, something to scroll.
-    [self.scrollView setContentSize:CGSizeMake(320,self.view.bounds.size.height*1.2)];
+    CGSize size = CGSizeMake(320,self.view.bounds.size.height*1.2);
+    self.graphView.frame = CGRectMake(0, 0, size.width, size.height);
+    [self.scrollView setContentSize:size];
 }
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0D343C1783999600848CBC /* RCWGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0D343B1783999600848CBC /* RCWGraphView.m */; };
+		AB0D343F1783A45D00848CBC /* RCWPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0D343E1783A45D00848CBC /* RCWPanGestureRecognizer.m */; };
 		AB44F32417823DE40064ABF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB44F32317823DE40064ABF1 /* UIKit.framework */; };
 		AB44F32617823DE40064ABF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB44F32517823DE40064ABF1 /* Foundation.framework */; };
 		AB44F33017823DE40064ABF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB44F32E17823DE40064ABF1 /* InfoPlist.strings */; };
@@ -22,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB0D343A1783999600848CBC /* RCWGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCWGraphView.h; sourceTree = "<group>"; };
+		AB0D343B1783999600848CBC /* RCWGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCWGraphView.m; sourceTree = "<group>"; };
+		AB0D343D1783A45D00848CBC /* RCWPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCWPanGestureRecognizer.h; sourceTree = "<group>"; };
+		AB0D343E1783A45D00848CBC /* RCWPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCWPanGestureRecognizer.m; sourceTree = "<group>"; };
 		AB44F32017823DE40064ABF1 /* ScrollViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB44F32317823DE40064ABF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AB44F32517823DE40064ABF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +97,10 @@
 				AB44F33517823DE40064ABF1 /* RCWAppDelegate.m */,
 				AB44F36017823E430064ABF1 /* RCWViewController.h */,
 				AB44F36117823E430064ABF1 /* RCWViewController.m */,
+				AB0D343A1783999600848CBC /* RCWGraphView.h */,
+				AB0D343B1783999600848CBC /* RCWGraphView.m */,
+				AB0D343D1783A45D00848CBC /* RCWPanGestureRecognizer.h */,
+				AB0D343E1783A45D00848CBC /* RCWPanGestureRecognizer.m */,
 				AB44F32C17823DE40064ABF1 /* Supporting Files */,
 				AB44F35E17823DF90064ABF1 /* Storyboard.storyboard */,
 			);
@@ -181,6 +191,8 @@
 				AB44F33217823DE40064ABF1 /* main.m in Sources */,
 				AB44F33617823DE40064ABF1 /* RCWAppDelegate.m in Sources */,
 				AB44F36217823E430064ABF1 /* RCWViewController.m in Sources */,
+				AB0D343C1783999600848CBC /* RCWGraphView.m in Sources */,
+				AB0D343F1783A45D00848CBC /* RCWPanGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
